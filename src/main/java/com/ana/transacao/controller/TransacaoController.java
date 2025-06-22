@@ -3,6 +3,9 @@ package com.ana.transacao.controller;
 import com.ana.transacao.model.Transacao;
 import com.ana.transacao.messaging.TransacaoProducer;
 import com.ana.transacao.service.TransacaoService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,10 +40,13 @@ public class TransacaoController {
     }
 
     @PutMapping("/{id}")
-    public Transacao atualizar(@PathVariable Long id, @RequestBody Transacao transacao) {
-        Transacao atualizada = service.atualizar(id, transacao);
-        producer.enviar(atualizada); // envia mensagem atualizada para a fila
-        return atualizada;
+    public ResponseEntity<?> atualizarTransacao(@PathVariable Long id, @RequestBody Transacao novaTransacao) {
+        try {
+            Transacao atualizada = service.atualizar(id, novaTransacao);
+            return ResponseEntity.ok(atualizada);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")

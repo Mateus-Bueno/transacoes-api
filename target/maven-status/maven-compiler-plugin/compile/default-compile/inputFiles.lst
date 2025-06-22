@@ -1,5 +1,10 @@
 C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\controller\TransacaoController.java
 C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\model\Transacao.java
+C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\config\CorsConfig.java
 C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\service\TransacaoService.java
+C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\messaging\TransacaoProducer.java
 C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\TransacoesApplication.java
+C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\config\RabbitMQConfig.java
+C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\model\CategoriaEvent.java
 C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\repository\TransacaoRepository.java
+C:\Users\User\Documents\transacoes\src\main\java\com\ana\transacao\listener\CategoriaListener.java
