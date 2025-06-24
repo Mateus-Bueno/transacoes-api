@@ -1,37 +1,45 @@
-# 🧾 Microsserviço de Transações – Projeto Final Integrado (5º Semestre)
-
-Este repositório faz parte do **Projeto Final Integrado** do curso de **Tecnologia em Análise e Desenvolvimento de Sistemas (IFSP)**, desenvolvido para as disciplinas:
-
-- PTBDAMS – Desenvolvimento de APIs e Microsserviços
-- PTBADOP – Ambiente de Desenvolvimento e Operações (DevOps)
-- PTBDDMA – Desenvolvimento para Dispositivos Móveis
-
-## 📱 Tema do Projeto: Gestão Financeira Pessoal
-
-O sistema tem como objetivo auxiliar usuários a gerenciarem seus gastos diários, permitindo o cadastro de transações e categorização de despesas. O projeto é dividido em três microsserviços:
-
-- Usuários (autenticação e dados pessoais)
-- Categorias (descrição de tipos de gastos) 
-- Transações (**este repositório**) 
----
-
-## 👩‍💻 Responsáveis
-
-| Parte do Projeto                    | Integrante    |
-|------------------------------------ |-------------- |
-| Microsserviço de Transações         | Ana           |
-| Microsserviço de Usuários           | Gabriele      |
-| Microsserviço de Categorias         | Letícia       |
-| Aplicativo Flutter                  | Matheus       |
-| DevOps / Deploy e Documentação      | Jhonatan      |
+Aqui está a versão pronta para copiar e colar no seu repositório GitHub como um arquivo `README.md`:
 
 ---
 
-## 🧩 Microsserviço de Transações
+````markdown
+# Microsserviço de Transações – Projeto Final Integrado (5º Semestre)
 
-Este serviço é responsável por gerenciar as **transações financeiras** dos usuários.
+Este repositório faz parte do **Projeto Final Integrado** do curso de **Tecnologia em Análise e Desenvolvimento de Sistemas – IFSP**. O projeto foi desenvolvido nas disciplinas:
 
-### 🔗 Estrutura dos Dados
+- PTBDAMS – Desenvolvimento de APIs e Microsserviços  
+- PTBADOP – Ambiente de Desenvolvimento e Operações (DevOps)  
+- PTBDDMA – Desenvolvimento para Dispositivos Móveis  
+
+## Tema do Projeto: Gestão Financeira Pessoal
+
+O sistema tem como objetivo fornecer aos usuários um meio eficiente de gerenciar seus gastos diários, através do cadastro, categorização e acompanhamento de transações financeiras.
+
+O projeto está estruturado em três microsserviços principais:
+
+- Microsserviço de Usuários (responsável por autenticação e dados pessoais)
+- Microsserviço de Categorias (responsável pela classificação de despesas)
+- Microsserviço de Transações (**este repositório**)
+
+---
+
+## Equipe de Desenvolvimento
+
+| Parte do Projeto                 | Integrante    |
+|--------------------------------- |-------------- |
+| Microsserviço de Transações       | Ana           |
+| Microsserviço de Usuários         | Gabriele      |
+| Microsserviço de Categorias       | Letícia       |
+| Aplicativo Flutter (Frontend)     | Matheus       |
+| DevOps / Deploy / Documentação    | Jhonatan      |
+
+---
+
+## Microsserviço de Transações
+
+Este microsserviço é responsável pelo gerenciamento de todas as **transações financeiras** registradas pelos usuários.
+
+### Estrutura dos Dados (Exemplo de Payload)
 
 ```json
 {
@@ -42,49 +50,49 @@ Este serviço é responsável por gerenciar as **transações financeiras** dos 
   "user_id": 3,
   "categoria_id": 2
 }
-🔄 Funcionalidades
-Cadastro, edição, listagem e remoção de transações (CRUD)
+````
 
-Integração com microsserviços de Usuários e Categorias
+### Funcionalidades Principais
 
-Comunicação assíncrona com RabbitMQ (fila: categorias.fila)
+* Cadastro de transações
+* Edição de transações
+* Listagem de transações
+* Exclusão de transações
+* Integração com os microsserviços de Usuários e Categorias
+* Comunicação assíncrona utilizando RabbitMQ
+* Documentação automática via Swagger/OpenAPI
 
-Documentação Swagger
+---
 
-⚙️ Tecnologias Utilizadas
-Java 17
+## Tecnologias Utilizadas
 
-Spring Boot 3.x
+* Java 17
+* Spring Boot 3.x
+* PostgreSQL
+* RabbitMQ
+* Swagger / OpenAPI
+* Docker
+* GitHub Actions (CI/CD)
 
-PostgreSQL
+---
 
-RabbitMQ
+## Como Executar Localmente
 
-Swagger/OpenAPI
+### Pré-requisitos
 
-Docker
+* Java 17 instalado
+* Docker e Docker Compose
+* PostgreSQL rodando localmente
+* RabbitMQ executando via Docker:
 
-GitHub Actions (CI/CD)
-
-📦 Como executar localmente
-Pré-requisitos:
-Docker e Docker Compose
-
-Java 17
-
-PostgreSQL rodando localmente
-
-RabbitMQ rodando via Docker:
-
-bash
-Copiar
-Editar
+```bash
 docker run -d --hostname rabbitmq-local --name rabbitmq \
   -p 5672:5672 -p 15672:15672 rabbitmq:3-management
-Configuração do application.properties:
-properties
-Copiar
-Editar
+```
+
+### Configuração do `application.properties`
+
+```properties
 spring.rabbitmq.host=localhost
 spring.rabbitmq.port=5672
 spring.rabbitmq.username=guest
@@ -93,46 +101,64 @@ spring.rabbitmq.password=guest
 spring.datasource.url=jdbc:postgresql://localhost:5432/transacoes
 spring.datasource.username=postgres
 spring.datasource.password=postgres
-Rodando o projeto:
-bash
-Copiar
-Editar
+```
+
+### Execução do Projeto
+
+```bash
 ./mvnw spring-boot:run
-Acesse a documentação Swagger:
-👉 http://localhost:8080/swagger-ui/index.html
+```
 
-🧪 Endpoints disponíveis
-Método	Endpoint	Descrição
-GET	/transacoes	Listar transações
-POST	/transacoes	Criar nova transação
-PUT	/transacoes/{id}	Atualizar transação
-DELETE	/transacoes/{id}	Remover transação
+### Acesso à Documentação Swagger
 
-📡 Integração com RabbitMQ
-Mensagens são consumidas da fila categorias.fila, enviada pelo microsserviço de Categorias.
+* [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
-Listener configurado em:
+---
 
-java
-Copiar
-Editar
+## Endpoints Disponíveis
+
+| Método | Endpoint           | Descrição                         |
+| ------ | ------------------ | --------------------------------- |
+| GET    | `/transacoes`      | Listar todas as transações        |
+| POST   | `/transacoes`      | Criar uma nova transação          |
+| PUT    | `/transacoes/{id}` | Atualizar uma transação existente |
+| DELETE | `/transacoes/{id}` | Excluir uma transação             |
+
+---
+
+## Integração com RabbitMQ
+
+O microsserviço de Transações consome mensagens da fila `categorias.fila`, enviadas pelo microsserviço de Categorias.
+
+### Exemplo de Listener:
+
+```java
 @RabbitListener(queues = "categorias.fila")
 public void receberMensagem(String mensagem) {
     System.out.println("Mensagem recebida da fila de categorias: " + mensagem);
 }
-🚀 Deploy Automatizado
-O deploy será realizado via GitHub Actions com deploy contínuo para a nuvem (ex: Render, Railway ou Heroku).
+```
 
-Arquivo de configuração da pipeline: .github/workflows/deploy.yml (em construção)
+---
 
-📚 Documentação complementar
- Swagger ativo e funcional
+## Deploy Automatizado (CI/CD)
 
- Mensageria com RabbitMQ implementada
+O processo de deploy será realizado de forma automatizada via **GitHub Actions**, com publicação contínua para a nuvem (Render, Railway ou Heroku).
 
- Integração REST com outros microsserviços
+* Arquivo de configuração da pipeline: `.github/workflows/deploy.yml` (em desenvolvimento)
 
- Prints dos testes no Postman (ver pasta /docs)
+---
 
- Print do deploy funcionando (em andamento)
+## Documentação Complementar
 
+* Documentação Swagger ativa e funcional
+* Integração com RabbitMQ implementada
+* Comunicação REST entre microsserviços concluída
+* Evidências de testes via Postman (disponíveis na pasta `/docs`)
+* Registro de etapas de deploy (em andamento)
+
+```
+
+---
+
+```
