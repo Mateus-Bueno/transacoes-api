@@ -10,18 +10,17 @@ Este repositório faz parte do **Projeto Final Integrado** do curso de **Tecnolo
 
 O sistema tem como objetivo auxiliar usuários a gerenciarem seus gastos diários, permitindo o cadastro de transações e categorização de despesas. O projeto é dividido em três microsserviços:
 
-- Usuários (autenticação e dados pessoais) - Gabi
-- Categorias (descrição de tipos de gastos) - Leticia 
-- Transações (**este repositório**) - Ana
-
+- Usuários (autenticação e dados pessoais)
+- Categorias (descrição de tipos de gastos) 
+- Transações (**este repositório**) 
 ---
 
 ## 👩‍💻 Responsáveis
 
-| Parte do Projeto                     | Integrante    |
-|-------------------------------------|---------------|
-| Microsserviço de Transações (Spring Boot) | Ana           |
-| Microsserviço de Usuários (Spring Boot) | Gabriele           |
+| Parte do Projeto                    | Integrante    |
+|------------------------------------ |-------------- |
+| Microsserviço de Transações         | Ana           |
+| Microsserviço de Usuários           | Gabriele      |
 | Microsserviço de Categorias         | Letícia       |
 | Aplicativo Flutter                  | Matheus       |
 | DevOps / Deploy e Documentação      | Jhonatan      |
