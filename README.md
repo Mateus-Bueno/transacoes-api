@@ -1,4 +1,3 @@
-Aqui está a versão pronta para copiar e colar no seu repositório GitHub como um arquivo `README.md`:
 
 ---
 
