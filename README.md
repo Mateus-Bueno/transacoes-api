@@ -1,7 +1,4 @@
 
----
-
-````markdown
 # Microsserviço de Transações – Projeto Final Integrado (5º Semestre)
 
 Este repositório faz parte do **Projeto Final Integrado** do curso de **Tecnologia em Análise e Desenvolvimento de Sistemas – IFSP**. O projeto foi desenvolvido nas disciplinas:
