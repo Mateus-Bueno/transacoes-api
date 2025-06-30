@@ -4,12 +4,15 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * Configuração do RabbitMQ para a aplicação de transações.
- * Define fila, exchange e routing key.
+ * Define fila, exchange, routing key e conversão JSON.
  */
 @Configuration
 public class RabbitMQConfig {
@@ -48,5 +51,26 @@ public class RabbitMQConfig {
                 .bind(queue)
                 .to(exchange)
                 .with(ROUTING_KEY);
+    }
+
+    /**
+     * Conversor JSON para enviar objetos como JSON no RabbitMQ.
+     * @return Jackson2JsonMessageConverter
+     */
+    @Bean
+    public Jackson2JsonMessageConverter jackson2JsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
+    /**
+     * Configuração do RabbitTemplate para usar o conversor JSON.
+     * @param connectionFactory fábrica de conexões do RabbitMQ
+     * @return RabbitTemplate configurado
+     */
+    @Bean
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        template.setMessageConverter(jackson2JsonMessageConverter());
+        return template;
     }
 }

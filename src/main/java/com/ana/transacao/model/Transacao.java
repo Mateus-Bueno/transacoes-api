@@ -1,11 +1,14 @@
 package com.ana.transacao.model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;  // IMPORTANTE!
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "transacoes")
-public class Transacao {
+public class Transacao implements Serializable {  // IMPLEMENTA Serializable
+
+    private static final long serialVersionUID = 1L;  // recomendado para Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
