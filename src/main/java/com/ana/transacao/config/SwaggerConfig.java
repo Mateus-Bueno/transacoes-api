@@ -1,4 +1,4 @@
-package com.leticia.categorias.config; // Altere esse pacote conforme o seu projeto
+package com.ana.transacao.config; // Altere esse pacote conforme o seu projeto
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
